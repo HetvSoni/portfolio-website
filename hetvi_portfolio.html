@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hetvi Soni Data Analyst & AI Automation</title>
+<meta name="description" content="Hetvi Soni Data Analyst, AI Automation Engineer and Research Assistant at Penn State.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#faf8f5;color:#1c1410;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:#d4a882;border-radius:2px}
+
+/* ── TOKENS ── */
+:root{
+  /* Warm palette */
+  --cream:#faf8f5;
+  --cream-2:#f4f0ea;
+  --cream-3:#ede7dc;
+  --parchment:#e8dfd0;
+  --ink:#1c1410;
+  --ink-2:#3d2f25;
+  --ink-3:#6b5744;
+  --ink-4:#9c8070;
+  --ink-5:#c4aa96;
+
+  /* Accent warm ramp */
+  --terra:#c2562b;       /* terracotta */
+  --terra-2:#a8431f;
+  --amber:#d4841a;       /* amber */
+  --amber-2:#b86d0f;
+  --burnt:#8b3a1a;       /* burnt deep */
+  --terra-bg:rgba(194,86,43,.08);
+  --terra-bg-2:rgba(194,86,43,.14);
+  --terra-border:rgba(194,86,43,.2);
+  --amber-bg:rgba(212,132,26,.08);
+  --amber-border:rgba(212,132,26,.2);
+
+  /* Surfaces */
+  --surface:#ffffff;
+  --border:#e2d8cc;
+  --border-2:#cfc2b0;
+
+  --f-sans:'DM Sans',system-ui,sans-serif;
+  --f-serif:'Playfair Display',Georgia,serif;
+  --f-mono:'DM Mono',monospace;
+
+  --r6:6px;--r8:8px;--r12:12px;--r16:16px;--r20:20px;--r24:24px;
+  --sh1:0 1px 4px rgba(28,20,16,.06);
+  --sh2:0 4px 18px rgba(28,20,16,.09),0 1px 4px rgba(28,20,16,.05);
+  --sh3:0 12px 40px rgba(28,20,16,.12),0 4px 12px rgba(28,20,16,.06);
+  --sh4:0 20px 60px rgba(28,20,16,.15),0 8px 20px rgba(28,20,16,.07);
+}
+
+/* ══════════════ NAV ══════════════ */
+#nav{
+  position:fixed;inset:0 0 auto;z-index:400;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1rem,4vw,2.8rem);
+  background:rgba(250,248,245,.92);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+}
+#nav.up{box-shadow:0 2px 24px rgba(28,20,16,.08)}
+.n-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--f-serif);font-size:1.1rem;font-style:italic;
+  color:var(--ink);text-decoration:none;
+}
+.n-logo-mark{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--terra),var(--amber));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-serif);font-size:11px;font-style:italic;color:#fff;font-weight:500;
+  flex-shrink:0;
+}
+.n-links{display:flex;gap:clamp(.8rem,2vw,1.8rem);list-style:none}
+.n-links a{
+  font-size:12.5px;font-weight:500;color:var(--ink-3);
+  text-decoration:none;letter-spacing:.01em;
+  transition:color .15s;
+  padding-bottom:2px;
+  border-bottom:1.5px solid transparent;
+  transition:color .15s,border-color .15s;
+}
+.n-links a:hover{color:var(--terra);border-color:var(--terra)}
+.n-avail{
+  display:flex;align-items:center;gap:6px;
+  font-size:11.5px;font-weight:600;
+  color:var(--terra);
+  background:var(--terra-bg);
+  border:1px solid var(--terra-border);
+  padding:4px 13px;border-radius:99px;
+  letter-spacing:.02em;
+}
+.n-avail-dot{width:5px;height:5px;border-radius:50%;background:var(--terra);animation:blk 2s ease-in-out infinite}
+@keyframes blk{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ══════════════ HERO ══════════════ */
+.hero{
+  min-height:100vh;padding-top:56px;
+  background:var(--cream);
+  display:grid;grid-template-rows:1fr auto;
+  position:relative;overflow:hidden;
+}
+/* Dot texture */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,#c4aa96 1px,transparent 1px);
+  background-size:28px 28px;opacity:.28;
+  mask-image:radial-gradient(ellipse 90% 80% at 50% 0%,black 20%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 0%,black 20%,transparent 100%);
+  pointer-events:none;
+}
+.hero-wash{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 50% at 0% 30%,rgba(194,86,43,.06) 0%,transparent 60%),
+    radial-gradient(ellipse 45% 45% at 100% 60%,rgba(212,132,26,.05) 0%,transparent 60%);
+}
+/* Split layout: photo left, bio right Himanshu style */
+.hero-inner{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  align-items:center;
+  gap:4rem;
+  padding:5rem clamp(1rem,5vw,2.8rem) 4rem;
+  position:relative;z-index:2;
+  max-width:1100px;
+  margin:0 auto;
+  width:100%;
+}
+/* Photo column */
+.hero-photo-col{
+  display:flex;flex-direction:column;align-items:center;gap:1.4rem;
+  animation:up .6s .0s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-photo-wrap{
+  width:280px;height:280px;border-radius:var(--r24);
+  overflow:hidden;border:3px solid var(--border);
+  box-shadow:var(--sh3);
+  position:relative;flex-shrink:0;
+  background:var(--cream-3);
+}
+/* Warm overlay ring on photo */
+.hero-photo-wrap::after{
+  content:'';position:absolute;inset:0;
+  border-radius:calc(var(--r24) - 2px);
+  box-shadow:inset 0 0 0 3px rgba(194,86,43,.15);
+  pointer-events:none;
+}
+.hero-photo-wrap img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  display:block;
+  transition:transform .4s ease;
+}
+.hero-photo-wrap:hover img{transform:scale(1.03)}
+/* Placeholder shown when no image */
+.hero-photo-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.6rem;background:var(--cream-3);
+  color:var(--ink-5);
+}
+.hero-photo-placeholder svg{opacity:.4}
+.hero-photo-placeholder span{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--ink-5);text-align:center;padding:0 1rem}
+/* Social links below photo */
+.hero-socials{
+  display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;
+}
+.hero-social-link{
+  display:flex;align-items:center;gap:5px;
+  font-family:var(--f-mono);font-size:10px;font-weight:400;
+  color:var(--ink-4);letter-spacing:.06em;
+  text-decoration:none;
+  padding:5px 12px;border-radius:99px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  transition:color .15s,border-color .15s,background .15s;
+}
+.hero-social-link:hover{color:var(--terra);border-color:var(--terra-border);background:var(--terra-bg)}
+/* Bio column */
+.hero-bio-col{
+  animation:up .65s .08s cubic-bezier(.16,1,.3,1) both;
+}
+.h-hook{
+  font-family:var(--f-serif);font-style:italic;
+  font-size:clamp(1.1rem,1.8vw,1.35rem);
+  font-weight:400;color:var(--terra);
+  margin-bottom:1.2rem;
+  line-height:1.3;letter-spacing:-.01em;
+}
+.hero-name{
+  font-family:var(--f-serif);
+  font-size:clamp(3rem,5.5vw,5.5rem);
+  font-weight:400;line-height:.93;
+  letter-spacing:-.03em;color:var(--ink);
+  margin-bottom:1.6rem;
+  animation:none;
+}
+.hero-name em{font-style:italic;color:var(--terra)}
+/* Multi-paragraph bio block Manish style */
+.hero-bio{margin-bottom:2.2rem}
+.hero-bio p{
+  font-size:15px;
+  font-weight:300;color:var(--ink-3);
+  line-height:1.8;
+  margin-bottom:.8rem;
+}
+.hero-bio p:last-child{margin-bottom:0}
+.hero-bio strong{font-weight:600;color:var(--ink-2)}
+.hero-bio em{font-style:italic;color:var(--terra)}
+/* Subtle role tags row */
+.hero-roles{
+  display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;
+}
+.hero-role-tag{
+  font-family:var(--f-mono);font-size:10px;
+  padding:4px 12px;border-radius:99px;
+  border:1px solid var(--border-2);
+  color:var(--ink-3);letter-spacing:.05em;
+  background:var(--surface);
+}
+.hero-ctas{
+  display:flex;gap:10px;flex-wrap:wrap;
+  animation:none;
+}
+/* Eyebrow kept for ribbon only */
+.h-eyebrow{display:none}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 22px;border-radius:var(--r8);
+  font-size:13px;font-weight:600;text-decoration:none;
+  font-family:var(--f-sans);letter-spacing:.01em;
+  transition:transform .15s,box-shadow .2s,background .15s;
+  border:1.5px solid transparent;cursor:pointer;
+}
+.btn-warm{
+  background:var(--terra);color:#fff;border-color:var(--terra);
+  box-shadow:0 3px 12px rgba(194,86,43,.3);
+}
+.btn-warm:hover{background:var(--terra-2);transform:translateY(-1px);box-shadow:0 5px 20px rgba(194,86,43,.4)}
+.btn-outline{background:transparent;color:var(--ink-2);border-color:var(--border-2)}
+.btn-outline:hover{background:var(--cream-2);transform:translateY(-1px)}
+
+/* Right stat card cluster */
+.hero-right{
+  animation:up .65s .1s cubic-bezier(.16,1,.3,1) both;
+}
+.stat-cluster{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1rem;
+}
+.sc-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r16);
+  padding:1.6rem;
+  box-shadow:var(--sh2);
+  transition:transform .2s,box-shadow .2s;
+  position:relative;overflow:hidden;
+}
+.sc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--terra),var(--amber));
+  opacity:0;transition:opacity .2s;
+}
+.sc-card:hover{transform:translateY(-2px);box-shadow:var(--sh3)}
+.sc-card:hover::before{opacity:1}
+.sc-val{
+  font-family:var(--f-serif);font-size:2.3rem;font-style:italic;
+  color:var(--terra);line-height:1;margin-bottom:4px;
+}
+.sc-lbl{font-size:11.5px;font-weight:500;color:var(--ink-3)}
+.sc-card.wide{grid-column:span 2;
+  display:flex;align-items:center;gap:1.5rem;
+  padding:1.4rem 1.8rem;
+}
+.sc-card.wide .sc-val{font-size:1.8rem;flex-shrink:0}
+.sc-card.wide .sc-lbl{font-size:12px}
+
+/* Bottom ribbon */
+.hero-ribbon{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:var(--cream-2);
+  border-top:1px solid var(--border);
+  animation:up .65s .28s cubic-bezier(.16,1,.3,1) both;
+}
+.hr-cell{
+  padding:1.4rem clamp(.8rem,2.5vw,2rem);
+  border-right:1px solid var(--border);
+  transition:background .18s;
+}
+.hr-cell:last-child{border-right:none}
+.hr-cell:hover{background:var(--cream-3)}
+.hr-tag{font-family:var(--f-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-5);margin-bottom:4px}
+.hr-val{font-size:13.5px;font-weight:600;color:var(--ink-2)}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ══════════════ TICKER ══════════════ */
+.ticker{overflow:hidden;border-bottom:1px solid var(--border);background:var(--cream-3);padding:8px 0}
+.ticker-inner{display:flex;white-space:nowrap;animation:tick 34s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ti{display:inline-flex;align-items:center;gap:1.5rem;padding:0 1.5rem;font-family:var(--f-mono);font-size:10px;font-weight:400;color:var(--ink-5);letter-spacing:.1em;text-transform:uppercase}
+.ti .s{color:var(--terra);font-size:7px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════ SECTION SHELL ══════════════ */
+.section{border-top:1px solid var(--border)}
+.si{max-width:1100px;margin:0 auto;padding:5.5rem clamp(1rem,4vw,2.8rem)}
+/* alt bg */
+.s-cream{background:var(--cream)}
+.s-cream2{background:var(--cream-2)}
+
+/* Section heading */
+.sh{margin-bottom:3rem}
+.sh-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--f-mono);font-size:10px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--terra);
+  margin-bottom:.6rem;
+}
+.sh-tag::before{content:'';width:14px;height:1.5px;background:var(--terra);border-radius:2px;display:block}
+.sh-title{
+  font-family:var(--f-serif);font-style:italic;font-weight:400;
+  font-size:clamp(2rem,3.8vw,3.2rem);line-height:1.05;
+  letter-spacing:-.02em;color:var(--ink);margin-bottom:.5rem;
+}
+.sh-desc{font-size:14.5px;color:var(--ink-3);line-height:1.7;max-width:460px}
+
+/* ══════════════ ABOUT CARDS ══════════════ */
+.about-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+}
+.ab-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r16);padding:1.6rem;
+  box-shadow:var(--sh1);
+  transition:transform .2s,box-shadow .2s;
+}
+.ab-card:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.ab-ico{font-size:1.5rem;margin-bottom:.7rem}
+.ab-label{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-5);margin-bottom:.3rem}
+.ab-val{font-size:14px;font-weight:600;color:var(--ink);line-height:1.3}
+.ab-sub{font-size:11.5px;color:var(--ink-4);margin-top:2px}
+
+/* ══════════════ PROJECTS ══════════════ */
+
+/* HOLOGIC full-width hero card */
+.pf{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r24);overflow:hidden;
+  box-shadow:var(--sh2);margin-bottom:1.2rem;
+  transition:box-shadow .3s,transform .3s;
+}
+.pf:hover{box-shadow:var(--sh4);transform:translateY(-2px)}
+/* Top bar */
+.pf-bar{
+  background:linear-gradient(135deg,rgba(194,86,43,.07) 0%,rgba(212,132,26,.05) 100%);
+  border-bottom:1px solid var(--terra-border);
+  padding:.9rem 2.2rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+}
+.pf-live{display:flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.pf-live-dot{width:6px;height:6px;border-radius:50%;background:var(--terra);animation:blk 1.6s ease-in-out infinite}
+.pf-bar-r{font-family:var(--f-mono);font-size:9.5px;color:var(--ink-5);letter-spacing:.08em}
+/* Split body */
+.pf-body{display:grid;grid-template-columns:5fr 6fr;border-bottom:1px solid var(--border)}
+.pf-left{padding:2.4rem;border-right:1px solid var(--border)}
+.pf-right{padding:2.4rem;background:var(--cream-2)}
+.pf-title{
+  font-family:var(--f-serif);font-size:2rem;font-style:italic;
+  font-weight:400;line-height:1.1;letter-spacing:-.01em;color:var(--ink);
+  margin-bottom:.4rem;
+}
+.pf-org{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-5);margin-bottom:1.1rem}
+.pf-desc{font-size:13.5px;color:var(--ink-2);line-height:1.74;margin-bottom:1.6rem}
+/* pipeline */
+.pipe-lbl{
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-5);
+  display:flex;align-items:center;gap:8px;margin-bottom:1rem;
+}
+.pipe-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.pipe-step{display:flex;gap:.9rem;padding:.8rem 0;border-bottom:1px dashed var(--border)}
+.pipe-step:last-child{border-bottom:none}
+.ps-l{display:flex;flex-direction:column;align-items:center;min-width:20px}
+.ps-num{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--terra-bg);border:1.5px solid var(--terra-border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-mono);font-size:8px;font-weight:600;color:var(--terra);flex-shrink:0;
+}
+.ps-ln{width:1.5px;flex:1;background:linear-gradient(to bottom,var(--terra-border),transparent);margin-top:3px}
+.pipe-step:last-child .ps-ln{display:none}
+.ps-title{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.ps-desc{font-size:11.5px;color:var(--ink-3);line-height:1.58}
+.ps-desc code{font-family:var(--f-mono);font-size:10.5px;background:var(--terra-bg);color:var(--terra);padding:1px 5px;border-radius:3px}
+/* metrics row */
+.pf-metrics{display:grid;grid-template-columns:repeat(4,1fr)}
+.pfm{padding:1.2rem 1.8rem;border-right:1px solid var(--border);transition:background .18s;cursor:default}
+.pfm:last-child{border-right:none}
+.pfm:hover{background:var(--cream-2)}
+.pfm-v{font-family:var(--f-serif);font-size:1.65rem;font-style:italic;color:var(--terra);line-height:1;margin-bottom:3px}
+.pfm-l{font-size:11px;font-weight:500;color:var(--ink-3)}
+
+/* Tag pills */
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:1.3rem}
+.tag{font-family:var(--f-mono);font-size:9.5px;padding:3px 9px;border-radius:5px;border:1px solid var(--border-2);color:var(--ink-3);letter-spacing:.03em}
+.tag-hi{background:var(--terra-bg);border-color:var(--terra-border);color:var(--terra)}
+.tag-am{background:var(--amber-bg);border-color:var(--amber-border);color:var(--amber-2)}
+
+/* 2-col grid */
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.pc{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r16);padding:2rem;
+  display:flex;flex-direction:column;gap:.9rem;
+  box-shadow:var(--sh1);position:relative;overflow:hidden;
+  transition:box-shadow .25s,transform .25s;
+}
+.pc::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2.5px;
+  background:linear-gradient(90deg,var(--terra),var(--amber));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s cubic-bezier(.16,1,.3,1);
+}
+.pc:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
+.pc:hover::after{transform:scaleX(1)}
+.pc-chips{display:flex;gap:.4rem;flex-wrap:wrap}
+.pc-chip{
+  font-family:var(--f-mono);font-size:9.5px;font-weight:500;
+  color:var(--terra);background:var(--terra-bg);
+  border:1px solid var(--terra-border);
+  padding:3px 9px;border-radius:99px;letter-spacing:.03em;
+}
+.pc-title{font-family:var(--f-serif);font-size:1.5rem;font-style:italic;font-weight:400;line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
+.pc-desc{font-size:13px;color:var(--ink-2);line-height:1.7;flex:1}
+.pc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:var(--r8);overflow:hidden;border:1px solid var(--border)}
+.pcg{background:var(--cream);padding:9px 5px;text-align:center}
+.pcg-v{font-family:var(--f-serif);font-size:1.15rem;font-style:italic;color:var(--terra);display:block;line-height:1}
+.pcg-l{font-size:9px;font-family:var(--f-mono);color:var(--ink-5);display:block;margin-top:3px;letter-spacing:.03em}
+.gh{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  color:var(--terra);text-decoration:none;letter-spacing:.05em;
+  transition:gap .2s;
+}
+.gh:hover{gap:9px}
+
+/* ══════════════ EXPERIENCE ══════════════ */
+/* Timeline-style layout */
+.exp-list{display:flex;flex-direction:column}
+.exp-item{
+  display:grid;grid-template-columns:220px 1fr;
+  gap:2.5rem;padding:2.8rem 0;
+  border-top:1px solid var(--border);
+  position:relative;
+}
+.exp-item:last-child{border-bottom:1px solid var(--border)}
+/* Left accent bar on hover */
+.exp-item::before{
+  content:'';position:absolute;left:-2.8rem;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--terra),var(--amber));
+  opacity:0;transition:opacity .2s;
+  border-radius:2px;
+}
+.exp-item:hover::before{opacity:.5}
+.ei-co{font-family:var(--f-serif);font-size:1.3rem;font-style:italic;color:var(--ink);line-height:1.1;margin-bottom:4px}
+.ei-when{font-family:var(--f-mono);font-size:9.5px;color:var(--ink-5);letter-spacing:.09em;line-height:1.6}
+.ei-loc{font-size:11.5px;color:var(--ink-5);margin-top:1px}
+.ei-role-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:.85rem}
+.ei-role{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.badge{font-family:var(--f-mono);font-size:8.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:99px}
+.badge-live{background:var(--terra-bg);color:var(--terra);border:1px solid var(--terra-border)}
+.badge-now{background:var(--amber-bg);color:var(--amber-2);border:1px solid var(--amber-border)}
+.ei-bullets{list-style:none;display:flex;flex-direction:column;gap:.48rem;margin-bottom:.95rem}
+.ei-bullets li{font-size:13.5px;color:var(--ink-2);padding-left:1.1rem;position:relative;line-height:1.68}
+.ei-bullets li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:1.5px;background:var(--terra);border-radius:2px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-family:var(--f-mono);font-size:9px;padding:2px 8px;background:var(--cream-2);border:1px solid var(--border);border-radius:4px;color:var(--ink-3);letter-spacing:.02em}
+.chip-hi{background:var(--terra-bg);border-color:var(--terra-border);color:var(--terra)}
+
+/* ══════════════ SKILLS ══════════════ */
+.sk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem}
+.sk-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r12);
+  padding:1.5rem;box-shadow:var(--sh1);
+  transition:box-shadow .2s,transform .2s;
+}
+.sk-card:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.sk-head{
+  display:flex;align-items:center;gap:7px;
+  padding-bottom:.85rem;border-bottom:1px solid var(--border);margin-bottom:.9rem;
+}
+.sk-icon{
+  width:28px;height:28px;border-radius:7px;
+  background:linear-gradient(135deg,var(--terra-bg),var(--amber-bg));
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+}
+.sk-name{font-size:12px;font-weight:700;color:var(--ink)}
+.sk-list{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.sk-list li{font-family:var(--f-mono);font-size:10.5px;color:var(--ink-3)}
+.sk-list li.hi{color:var(--ink);font-weight:500}
+
+/* ══════════════ AWARDS ══════════════ */
+.aw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.aw-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r16);
+  padding:2rem;box-shadow:var(--sh1);
+  display:flex;flex-direction:column;gap:.75rem;
+  transition:box-shadow .2s,transform .2s;
+  position:relative;overflow:hidden;
+}
+.aw-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--terra),var(--amber));
+  opacity:0;transition:opacity .2s;
+}
+.aw-card:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.aw-card:hover::after{opacity:1}
+.aw-ico{font-size:1.7rem;line-height:1}
+.aw-title{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.35}
+.aw-body{font-size:12.5px;color:var(--ink-3);line-height:1.65;flex:1}
+.aw-org{font-family:var(--f-mono);font-size:9px;color:var(--terra);letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+
+/* ══════════════ CONTACT ══════════════ */
+.contact-wrap{
+  background:linear-gradient(160deg,var(--cream) 0%,var(--cream-3) 100%);
+  position:relative;overflow:hidden;
+}
+.contact-wrap::before{
+  content:'';position:absolute;top:-120px;right:-120px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(194,86,43,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.cl-big{
+  font-family:var(--f-serif);font-size:clamp(2.5rem,5vw,4.5rem);
+  font-style:italic;font-weight:400;line-height:1.02;
+  letter-spacing:-.025em;color:var(--ink);margin-bottom:1rem;
+}
+.cl-big em{color:var(--terra)}
+.cl-sub{font-size:14.5px;color:var(--ink-3);line-height:1.72;margin-bottom:2rem;max-width:380px}
+.cc-list{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  border-radius:var(--r16);overflow:hidden;box-shadow:var(--sh2);
+}
+.cc-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.3rem 1.6rem;background:var(--surface);
+  text-decoration:none;color:var(--ink);
+  transition:background .15s;
+}
+.cc-row:hover{background:var(--cream-2)}
+.cc-row-l{display:flex;align-items:center;gap:12px}
+.cc-ico{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--terra-bg),var(--amber-bg));
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+}
+.cc-lbl{font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-5);margin-bottom:2px}
+.cc-val{font-size:13px;font-weight:600;color:var(--ink)}
+.cc-arrow{color:var(--terra);font-size:16px;transition:transform .2s}
+.cc-row:hover .cc-arrow{transform:translateX(4px)}
+
+/* ══════════════ FOOTER ══════════════ */
+footer{
+  background:var(--ink);
+  padding:1.6rem clamp(1rem,4vw,2.8rem);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ft-l{font-family:var(--f-serif);font-size:.95rem;font-style:italic;color:rgba(250,248,245,.55)}
+.ft-r{font-family:var(--f-mono);font-size:9px;color:rgba(250,248,245,.3);letter-spacing:.12em;text-transform:uppercase}
+
+/* ══════════════ REVEAL ══════════════ */
+.r{opacity:0;transform:translateY(20px);transition:opacity .62s cubic-bezier(.16,1,.3,1),transform .62s cubic-bezier(.16,1,.3,1)}
+.r.in{opacity:1;transform:none}
+.rd1{transition-delay:.07s}.rd2{transition-delay:.14s}
+.rd3{transition-delay:.21s}.rd4{transition-delay:.28s}
+
+/* ══════════════ RESPONSIVE ══════════════ */
+@media(max-width:900px){
+  .n-links{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem 2.5rem;text-align:center}
+  .hero-photo-col{flex-direction:column;align-items:center}
+  .hero-photo-wrap{width:200px;height:200px}
+  .hero-bio-col{display:flex;flex-direction:column;align-items:center}
+  .h-hook{text-align:center}
+  .hero-name{text-align:center}
+  .hero-roles{justify-content:center}
+  .hero-bio p{text-align:center}
+  .hero-ctas{justify-content:center}
+  .hero-ribbon{grid-template-columns:1fr}
+  .hr-cell{border-right:none;border-bottom:1px solid var(--border)}
+  .hr-cell:last-child{border-bottom:none}
+  .about-grid{grid-template-columns:1fr 1fr}
+  .pf-body{grid-template-columns:1fr}
+  .pf-left{border-right:none;border-bottom:1px solid var(--border)}
+  .pf-metrics{grid-template-columns:1fr 1fr}
+  .pfm:nth-child(2){border-right:none}
+  .pfm:nth-child(3){border-top:1px solid var(--border)}
+  .pfm:nth-child(4){border-top:1px solid var(--border)}
+  .pg{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr;gap:.8rem}
+  .exp-item::before{left:0;top:auto;bottom:-1px;width:100%;height:2px;background:linear-gradient(90deg,var(--terra),var(--amber))}
+  .sk-grid{grid-template-columns:1fr 1fr}
+  .aw-grid{grid-template-columns:1fr}
+  .contact-layout{grid-template-columns:1fr;gap:2.5rem}
+  footer{flex-direction:column;gap:.4rem;text-align:center}
+}
+@media(max-width:540px){
+  .about-grid{grid-template-columns:1fr 1fr}
+  .pf-metrics{grid-template-columns:1fr 1fr}
+  .pc-grid{grid-template-columns:1fr 1fr}
+  .sk-grid{grid-template-columns:1fr}
+  .hero-ribbon{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a class="n-logo" href="#top">
+    <div class="n-logo-mark">HS</div>
+    Hetvi Soni
+  </a>
+  <ul class="n-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="n-avail"><span class="n-avail-dot"></span>Open to work</div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero" id="top">
+  <div class="hero-wash"></div>
+  <div class="hero-inner">
+
+    <!-- PHOTO COLUMN -->
+    <div class="hero-photo-col">
+      <div class="hero-photo-wrap">
+        <!-- ════════════════════════════════════════
+             REPLACE THIS BLOCK WITH YOUR PHOTO:
+             <img src="your-photo.jpg" alt="Hetvi Soni">
+             See steps at the bottom of the page ↓
+        ════════════════════════════════════════ -->
+        <img src="Profile-Photo_Prof.jpeg" alt="Hetvi Soni">
+      </div>
+      <div class="hero-socials">
+        <a href="mailto:hetvisoni49w@gmail.com" class="hero-social-link">✉ Email</a>
+        <a href="https://github.com/HetvSoni" target="_blank" class="hero-social-link">⌥ GitHub</a>
+        <a href="tel:+12673516652" class="hero-social-link">✆ Phone</a>
+      </div>
+    </div>
+
+    <!-- BIO COLUMN -->
+    <div class="hero-bio-col">
+      <div class="h-hook">I build pipelines with clean logic and a little soul.</div>
+      <h1 class="hero-name">Hi, I'm <em>Hetvi.</em></h1>
+      <div class="hero-roles">
+        <span class="hero-role-tag">Data Analyst</span>
+        <span class="hero-role-tag">AI Automation Engineer</span>
+        <span class="hero-role-tag">Graduate Research Assistant</span>
+      </div>
+      <div class="hero-bio">
+        <p>
+          I'm a <strong>Supply Chain and AI Automation Engineer</strong> at Hologic and a Graduate Research Assistant at Penn State University, where I'm pursuing my M.S. in Data Analytics.
+        </p>
+        <p>
+          I build reliable data systems from <em>event-driven supply chain automation pipelines</em> that turn folders of images into editable flowcharts, to clinical ML models that detect ICU sepsis 6 hours before onset. My work lives at the intersection of automation, analytics, and real operational impact.
+        </p>
+        <p>
+          I care about data that doesn't just sit in dashboards but actually <strong>changes how decisions get made</strong> in supply chains, in research, and at the messy edges of real systems.
+        </p>
+      </div>
+      <div class="hero-ctas">
+        <a href="mailto:hetvisoni49w@gmail.com" class="btn btn-warm">Get in touch ↗</a>
+        <a href="#projects" class="btn btn-outline">View my work ↓</a>
+        <a href="#experience" class="btn btn-outline">Experience</a>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+  <div class="hero-ribbon">
+    <div class="hr-cell">
+      <div class="hr-tag">Currently at</div>
+      <div class="hr-val">Hologic Inc. · Supply Chain AI Automation</div>
+    </div>
+    <div class="hr-cell">
+      <div class="hr-tag">Also at</div>
+      <div class="hr-val">Penn State · Graduate Research Assistant</div>
+    </div>
+    <div class="hr-cell">
+      <div class="hr-tag">Looking for</div>
+      <div class="hr-val">Full-time roles · Data Analytics · AI Automation</div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ti">Python<span class="s">◆</span></span><span class="ti">SQL<span class="s">◆</span></span><span class="ti">LightGBM<span class="s">◆</span></span><span class="ti">Tableau<span class="s">◆</span></span><span class="ti">Power BI<span class="s">◆</span></span><span class="ti">Azure ETL<span class="s">◆</span></span><span class="ti">BERTopic · NLP<span class="s">◆</span></span><span class="ti">Databricks<span class="s">◆</span></span><span class="ti">Supply Chain Analytics<span class="s">◆</span></span><span class="ti">A/B Testing<span class="s">◆</span></span><span class="ti">Draw.io Automation<span class="s">◆</span></span><span class="ti">Computer Vision<span class="s">◆</span></span><span class="ti">Monte Carlo<span class="s">◆</span></span><span class="ti">AWS<span class="s">◆</span></span><span class="ti">Watchdog Pipelines<span class="s">◆</span></span><span class="ti">Prompt Engineering<span class="s">◆</span></span>
+    <span class="ti">Python<span class="s">◆</span></span><span class="ti">SQL<span class="s">◆</span></span><span class="ti">LightGBM<span class="s">◆</span></span><span class="ti">Tableau<span class="s">◆</span></span><span class="ti">Power BI<span class="s">◆</span></span><span class="ti">Azure ETL<span class="s">◆</span></span><span class="ti">BERTopic · NLP<span class="s">◆</span></span><span class="ti">Databricks<span class="s">◆</span></span><span class="ti">Supply Chain Analytics<span class="s">◆</span></span><span class="ti">A/B Testing<span class="s">◆</span></span><span class="ti">Draw.io Automation<span class="s">◆</span></span><span class="ti">Computer Vision<span class="s">◆</span></span><span class="ti">Monte Carlo<span class="s">◆</span></span><span class="ti">AWS<span class="s">◆</span></span><span class="ti">Watchdog Pipelines<span class="s">◆</span></span><span class="ti">Prompt Engineering<span class="s">◆</span></span>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="section s-cream" id="about">
+<div class="si">
+  <div class="sh r">
+    <div class="sh-tag">00 Who I am</div>
+    <h2 class="sh-title">About Me</h2>
+    <p class="sh-desc">Data Analyst and AI Automation Engineer who builds things end-to-end pipelines, models, dashboards, and systems that actually get used in production.</p>
+  </div>
+  <div class="about-grid r rd1">
+    <div class="ab-card">
+      <div class="ab-ico">🎓</div>
+      <div class="ab-label">Degree</div>
+      <div class="ab-val">M.S. Data Analytics</div>
+      <div class="ab-sub">Penn State · GPA 3.9 / 4.0</div>
+    </div>
+    <div class="ab-card">
+      <div class="ab-ico">📍</div>
+      <div class="ab-label">Location</div>
+      <div class="ab-val">Pennsylvania, USA</div>
+      <div class="ab-sub">Available immediately</div>
+    </div>
+    <div class="ab-card">
+      <div class="ab-ico">💼</div>
+      <div class="ab-label">Experience</div>
+      <div class="ab-val">3 Roles · 2 Countries</div>
+      <div class="ab-sub">India + United States</div>
+    </div>
+    <div class="ab-card">
+      <div class="ab-ico">🚀</div>
+      <div class="ab-label">Focus Areas</div>
+      <div class="ab-val">Data · AI · Supply Chain</div>
+      <div class="ab-sub">Open to full-time roles</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ PROJECTS ══ -->
+<div class="section s-cream2" id="projects">
+<div class="si">
+  <div class="sh r">
+    <div class="sh-tag">01 Selected work</div>
+    <h2 class="sh-title">Projects</h2>
+    <p class="sh-desc">From live supply chain automation pipelines to clinical ML systems built for measurable impact.</p>
+  </div>
+
+  <!-- HOLOGIC -->
+  <div class="pf r rd1">
+    <div class="pf-bar">
+      <div class="pf-live"><span class="pf-live-dot"></span>Live · Active project</div>
+      <div class="pf-bar-r">Hologic Inc. · Supply Chain &amp; AI Automation · May 2025 Present</div>
+    </div>
+    <div class="pf-body">
+      <div class="pf-left">
+        <div class="pf-title">Supply Chain Documentation Automation Pipeline</div>
+        <div class="pf-org">Hologic Inc. · Supply Chain &amp; AI Automation</div>
+        <p class="pf-desc">End-to-end document intelligence pipeline monitors supply chain directories, detects incoming image-based process docs, and converts them into structured editable Draw.io flowcharts automatically. From the moment an image lands in a folder, the pipeline runs without any human intervention.</p>
+        <div class="tags">
+          <span class="tag tag-hi">Python</span>
+          <span class="tag tag-hi">Watchdog</span>
+          <span class="tag tag-hi">Computer Vision</span>
+          <span class="tag tag-hi">OCR</span>
+          <span class="tag">Draw.io XML</span>
+          <span class="tag">DAG Construction</span>
+          <span class="tag">Process Automation</span>
+          <span class="tag">Supply Chain</span>
+        </div>
+      </div>
+      <div class="pf-right">
+        <div class="pipe-lbl">Pipeline 4 stages</div>
+        <div class="pipe-step">
+          <div class="ps-l"><div class="ps-num">01</div><div class="ps-ln"></div></div>
+          <div>
+            <div class="ps-title">Filesystem Watchdog &amp; Event Ingestion</div>
+            <div class="ps-desc">Python's <code>watchdog</code> monitors designated folders fires a trigger on file-create events for PNG/JPG/TIFF with zero manual kick-off.</div>
+          </div>
+        </div>
+        <div class="pipe-step">
+          <div class="ps-l"><div class="ps-num">02</div><div class="ps-ln"></div></div>
+          <div>
+            <div class="ps-title">Vision-Based Content Extraction &amp; OCR</div>
+            <div class="ps-desc">Computer vision + OCR decompose raw process images into shapes, swimlanes, decision branches, connectors, and embedded text.</div>
+          </div>
+        </div>
+        <div class="pipe-step">
+          <div class="ps-l"><div class="ps-num">03</div><div class="ps-ln"></div></div>
+          <div>
+            <div class="ps-title">DAG Construction &amp; XML Serialisation</div>
+            <div class="ps-desc">Node-edge topology reconstructed as a directed acyclic graph and serialised into Draw.io-compliant <code>.drawio</code> XML with layout and hierarchy preserved.</div>
+          </div>
+        </div>
+        <div class="pipe-step">
+          <div class="ps-l"><div class="ps-num">04</div></div>
+          <div>
+            <div class="ps-title">Auto-Export &amp; Output Delivery</div>
+            <div class="ps-desc">Generated <code>.drawio</code> files deposited into mapped output directories immediately editable and ready for SOP and regulatory workflows.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pf-metrics">
+      <div class="pfm"><div class="pfm-v">100%</div><div class="pfm-l">Manual diagramming eliminated</div></div>
+      <div class="pfm"><div class="pfm-v">Auto</div><div class="pfm-l">Image → Draw.io, end-to-end</div></div>
+      <div class="pfm"><div class="pfm-v">0</div><div class="pfm-l">Human interventions required</div></div>
+      <div class="pfm"><div class="pfm-v">Live</div><div class="pfm-l">Active in Hologic supply chain</div></div>
+    </div>
+  </div>
+
+  <!-- 2-col -->
+  <div class="pg r rd2">
+    <div class="pc">
+      <div class="pc-chips">
+        <span class="pc-chip">AUROC 0.856</span>
+        <span class="pc-chip">85.5% sensitivity</span>
+        <span class="pc-chip">23hr lead time</span>
+      </div>
+      <div class="pc-title">Early Sepsis Detection</div>
+      <p class="pc-desc">Three-phase LightGBM pipeline on PhysioNet/CinC 2019 ICU time-series data. Engineered temporal clinical features vitals, labs, SOFA-style scores on a patient-independent split. The balanced alert policy detected 85.5% of septic patients at a 23-hour median lead time, with 54.5% identified more than 6 hours before onset.</p>
+      <div class="pc-grid">
+        <div class="pcg"><span class="pcg-v">0.856</span><span class="pcg-l">AUROC</span></div>
+        <div class="pcg"><span class="pcg-v">85.5%</span><span class="pcg-l">Sensitivity</span></div>
+        <div class="pcg"><span class="pcg-v">54.5%</span><span class="pcg-l">&gt;6hr early</span></div>
+        <div class="pcg"><span class="pcg-v">23hr</span><span class="pcg-l">Lead time</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-hi">LightGBM</span><span class="tag tag-hi">scikit-learn</span>
+        <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Jupyter</span>
+      </div>
+      <a href="https://github.com/HetvSoni/Early-Sepsis-Detection" target="_blank" class="gh">View on GitHub →</a>
+    </div>
+    <div class="pc">
+      <div class="pc-chips">
+        <span class="pc-chip">$11K+ annual ROI</span>
+        <span class="pc-chip">65.9% stockout ↓</span>
+        <span class="pc-chip">73K+ transactions</span>
+      </div>
+      <div class="pc-title">Amazon FBA Reorder A/B Test</div>
+      <p class="pc-desc">90-day controlled experiment across 20 SKUs and 73K+ retail transactions. Applied stratified randomisation, Monte Carlo simulation, and statistical hypothesis testing to evaluate dynamic reorder strategies delivering fill rate gains, stockout reduction, and a fully automated analytics pipeline with ROI projections.</p>
+      <div class="pc-grid">
+        <div class="pcg"><span class="pcg-v">11.8%</span><span class="pcg-l">Fill rate ↑</span></div>
+        <div class="pcg"><span class="pcg-v">65.9%</span><span class="pcg-l">Stockouts ↓</span></div>
+        <div class="pcg"><span class="pcg-v">$11K+</span><span class="pcg-l">Annual ROI</span></div>
+        <div class="pcg"><span class="pcg-v">73K+</span><span class="pcg-l">Transactions</span></div>
+      </div>
+      <div class="tags">
+        <span class="tag tag-hi">SciPy</span><span class="tag tag-am">Monte Carlo</span>
+        <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">matplotlib</span>
+      </div>
+      <a href="https://github.com/HetvSoni/A-B_Testing" target="_blank" class="gh">View on GitHub →</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══ EXPERIENCE ══ -->
+<div class="section s-cream" id="experience">
+<div class="si">
+  <div class="sh r">
+    <div class="sh-tag">02 Work history</div>
+    <h2 class="sh-title">Experience</h2>
+    <p class="sh-desc">3 roles across supply chain AI automation, academic research, and e-commerce analytics India and the US.</p>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item r">
+      <div>
+        <div class="ei-co">Hologic Inc.</div>
+        <div class="ei-when">May 2025 Present</div>
+        <div class="ei-loc">Pennsylvania, USA</div>
+      </div>
+      <div>
+        <div class="ei-role-row">
+          <span class="ei-role">Supply Chain &amp; AI Automation Analyst</span>
+          <span class="badge badge-live">● Live</span>
+        </div>
+        <ul class="ei-bullets">
+          <li>Architected an event-driven documentation automation pipeline monitoring supply chain directories, triggering image-to-diagram conversion on file ingestion eliminating 100% of manual diagramming effort across process documentation workflows.</li>
+          <li>Engineered a vision-based content extraction layer leveraging OCR and computer vision to decompose process imagery into discrete node-edge topologies, serialised into Draw.io-compliant XML schema with full structural and geometric fidelity.</li>
+          <li>Designed the DAG construction module to reconstruct directed acyclic graph representations from extracted workflow elements, auto-exporting versioned <code style="font-family:var(--f-mono);font-size:11px;background:var(--terra-bg);color:var(--terra);padding:1px 5px;border-radius:3px">.drawio</code> files for immediate team access and SOP integration.</li>
+          <li>Delivered fully automated pipeline orchestration from raw image ingestion through structured diagram generation with zero manual intervention.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip chip-hi">Python</span><span class="chip chip-hi">Watchdog</span><span class="chip chip-hi">Computer Vision</span><span class="chip chip-hi">OCR</span><span class="chip">Draw.io XML</span><span class="chip">DAG</span><span class="chip">Supply Chain</span><span class="chip">Process Automation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item r rd1">
+      <div>
+        <div class="ei-co">Penn State University</div>
+        <div class="ei-when">Oct 2025 Present</div>
+        <div class="ei-loc">Pennsylvania, USA</div>
+      </div>
+      <div>
+        <div class="ei-role-row">
+          <span class="ei-role">Graduate Research Assistant</span>
+          <span class="badge badge-now">● Current</span>
+        </div>
+        <ul class="ei-bullets">
+          <li>Consolidated 5+ API and file-based data sources into Azure-compatible ETL pipelines using SQL, transforming 50K+ records into analytics-ready datasets and cutting manual data preparation by 30%.</li>
+          <li>Applied BERTopic and semantic similarity to organise 10K+ text records into structured groupings, increasing automated QA coverage by 25% while improving data reliability.</li>
+          <li>Converted domain knowledge into 20+ reusable data-mapping rules, saving 8+ hours of manual effort per week.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip chip-hi">Azure ETL</span><span class="chip chip-hi">BERTopic</span><span class="chip">SQL</span><span class="chip">NLP</span><span class="chip">Python</span><span class="chip">Data Modeling</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item r rd2">
+      <div>
+        <div class="ei-co">BrainBox Infoway</div>
+        <div class="ei-when">Apr 2024 Feb 2025</div>
+        <div class="ei-loc">Ahmedabad, India</div>
+      </div>
+      <div>
+        <div class="ei-role-row"><span class="ei-role">Data Analyst</span></div>
+        <ul class="ei-bullets">
+          <li>Integrated Shopify, CRM, and Google Analytics across 100K+ records using Python, SQL, and Databricks accelerating reporting readiness by 40%.</li>
+          <li>Designed Power BI and Tableau dashboards tracking conversion rate, revenue by product line, CAC, and retention reducing manual reporting workload by 35%.</li>
+          <li>Led A/B tests across marketing funnels: boosted AOV by 12%, lowered bounce rate by 15%, elevated retention by 18%, saved 25+ hours/month.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip chip-hi">Power BI</span><span class="chip chip-hi">Tableau</span><span class="chip">Python</span><span class="chip">Databricks</span><span class="chip">A/B Testing</span><span class="chip">Shopify</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item r rd3">
+      <div>
+        <div class="ei-co">Neev Technologies</div>
+        <div class="ei-when">May 2024 Sep 2024</div>
+        <div class="ei-loc">Bangalore, India</div>
+      </div>
+      <div>
+        <div class="ei-role-row"><span class="ei-role">Data Analyst Intern</span></div>
+        <ul class="ei-bullets">
+          <li>Integrated API, e-commerce, and operational datasets using Postman, AWS, Python, and SQL transforming 75K+ records and improving supply chain visibility by 30%.</li>
+          <li>Built SQL pipelines, Tableau dashboards, and Python visualisation modules tracking 8+ KPIs including fill rate and order success rate.</li>
+          <li>Conducted EDA, forecasting, and predictive modelling across 50K+ operational records, surfacing fulfillment gaps and demand patterns.</li>
+        </ul>
+        <div class="chips">
+          <span class="chip chip-hi">AWS</span><span class="chip chip-hi">Tableau</span><span class="chip">SQL</span><span class="chip">Postman</span><span class="chip">EDA</span><span class="chip">Forecasting</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ SKILLS ══ -->
+<div class="section s-cream2" id="skills">
+<div class="si">
+  <div class="sh r">
+    <div class="sh-tag">03 Technical stack</div>
+    <h2 class="sh-title">Skills</h2>
+    <p class="sh-desc">Programming, ML, BI, cloud infrastructure, automation, and supply chain analytics.</p>
+  </div>
+  <div class="sk-grid r rd1">
+    <div class="sk-card">
+      <div class="sk-head"><div class="sk-icon">🐍</div><div class="sk-name">Programming</div></div>
+      <ul class="sk-list"><li class="hi">Python</li><li class="hi">SQL</li><li>Pandas · NumPy</li><li>Data Transformation</li><li>API Integration</li><li>Data Cleaning</li></ul>
+    </div>
+    <div class="sk-card">
+      <div class="sk-head"><div class="sk-icon">🤖</div><div class="sk-name">ML &amp; Statistics</div></div>
+      <ul class="sk-list"><li class="hi">LightGBM</li><li class="hi">scikit-learn</li><li>BERTopic · NLP</li><li>A/B Testing</li><li>Monte Carlo</li><li>Predictive Modeling</li></ul>
+    </div>
+    <div class="sk-card">
+      <div class="sk-head"><div class="sk-icon">📊</div><div class="sk-name">Visualisation &amp; BI</div></div>
+      <ul class="sk-list"><li class="hi">Tableau</li><li class="hi">Power BI</li><li>Matplotlib · Seaborn</li><li>KPI Development</li><li>Dashboard Design</li><li>Reporting Automation</li></ul>
+    </div>
+    <div class="sk-card">
+      <div class="sk-head"><div class="sk-icon">☁️</div><div class="sk-name">Cloud &amp; Infra</div></div>
+      <ul class="sk-list"><li class="hi">AWS</li><li class="hi">Azure ETL</li><li>Postman</li><li>Generative AI</li><li>Prompt Engineering</li></ul>
+    </div>
+    <div class="sk-card">
+      <div class="sk-head"><div class="sk-icon">⚙️</div><div class="sk-name">Automation</div></div>
+      <ul class="sk-list"><li class="hi">ETL Pipelines</li><li class="hi">Watchdog / FS Events</li><li>Draw.io XML</li><li>OCR Pipelines</li><li>DAG Construction</li><li>Workflow Design</li></ul>
+    </div>
+    <div class="sk-card">
+      <div class="sk-head"><div class="sk-icon">🏭</div><div class="sk-name">Supply Chain</div></div>
+      <ul class="sk-list"><li class="hi">Inventory Analysis</li><li class="hi">Demand Forecasting</li><li>Fill Rate Analytics</li><li>Stockout Analysis</li><li>Order Performance</li><li>Fulfillment Analytics</li></ul>
+    </div>
+    <div class="sk-card">
+      <div class="sk-head"><div class="sk-icon">📈</div><div class="sk-name">Business Analytics</div></div>
+      <ul class="sk-list"><li class="hi">Cohort Analysis</li><li class="hi">Revenue Analytics</li><li>Customer Behavior</li><li>CAC · Retention</li><li>Variance Analysis</li><li>Trend Forecasting</li></ul>
+    </div>
+    <div class="sk-card">
+      <div class="sk-head"><div class="sk-icon">🎓</div><div class="sk-name">Education</div></div>
+      <ul class="sk-list">
+        <li class="hi" style="color:var(--terra)">GPA 3.9 / 4.0</li>
+        <li>M.S. Data Analytics</li>
+        <li style="color:var(--ink-5)">Penn State · 2025–Now</li>
+        <li class="hi">GPA 8.91 / 10</li>
+        <li>B.E. Computer Engg.</li>
+        <li style="color:var(--ink-5)">CHARUSAT · 2020–24</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ AWARDS ══ -->
+<div class="section s-cream" id="awards">
+<div class="si">
+  <div class="sh r">
+    <div class="sh-tag">04 Recognition</div>
+    <h2 class="sh-title">Awards</h2>
+    <p class="sh-desc">Competition wins, research honours, and product excellence across three organisations.</p>
+  </div>
+  <div class="aw-grid r rd1">
+    <div class="aw-card">
+      <div class="aw-ico">🏆</div>
+      <div class="aw-title">Tableau Vizz Competition Winner</div>
+      <div class="aw-body">Won the Tableau data visualisation competition hosted by EigenX recognised for building the most impactful and analytically insightful dashboard among all participants.</div>
+      <div class="aw-org">EigenX · Tableau</div>
+    </div>
+    <div class="aw-card">
+      <div class="aw-ico">🥇</div>
+      <div class="aw-title">1st Place Best Poster Award</div>
+      <div class="aw-body">Recognised for outstanding research poster at Penn State, representing AI/ML pipeline work conducted as part of the Graduate Research Assistantship programme.</div>
+      <div class="aw-org">Pennsylvania State University</div>
+    </div>
+    <div class="aw-card">
+      <div class="aw-ico">⭐</div>
+      <div class="aw-title">Software Excellence MediFlow</div>
+      <div class="aw-body">Awarded for developing MediFlow, a symptom-to-diagnosis flowchart application that guides users to probable medical conditions based on detected symptom clusters.</div>
+      <div class="aw-org">Bhaikaka University</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div class="section contact-wrap" id="contact">
+<div class="si">
+  <div class="sh r" style="margin-bottom:2.5rem">
+    <div class="sh-tag">05 Get in touch</div>
+    <h2 class="sh-title">Contact</h2>
+  </div>
+  <div class="contact-layout">
+    <div class="r">
+      <div class="cl-big">Let's build<br>something <em>great.</em></div>
+      <p class="cl-sub">Open to full-time roles in data analytics, supply chain AI, automation engineering, and research. Based in Pennsylvania available immediately.</p>
+      <a href="mailto:hetvisoni49w@gmail.com" class="btn btn-warm" style="font-size:14px;padding:12px 28px">Send a message →</a>
+    </div>
+    <div class="r rd1">
+      <div class="cc-list">
+        <a href="mailto:hetvisoni49w@gmail.com" class="cc-row">
+          <div class="cc-row-l"><div class="cc-ico">✉️</div><div><div class="cc-lbl">Email</div><div class="cc-val">hetvisoni49w@gmail.com</div></div></div>
+          <div class="cc-arrow">→</div>
+        </a>
+        <a href="https://github.com/HetvSoni" target="_blank" class="cc-row">
+          <div class="cc-row-l"><div class="cc-ico">🔗</div><div><div class="cc-lbl">GitHub</div><div class="cc-val">github.com/HetvSoni</div></div></div>
+          <div class="cc-arrow">→</div>
+        </a>
+        <a href="tel:+12673516652" class="cc-row">
+          <div class="cc-row-l"><div class="cc-ico">📞</div><div><div class="cc-lbl">Phone</div><div class="cc-val">+1 (267) 351-6652</div></div></div>
+          <div class="cc-arrow">→</div>
+        </a>
+        <div class="cc-row" style="cursor:default">
+          <div class="cc-row-l"><div class="cc-ico">📍</div><div><div class="cc-lbl">Location</div><div class="cc-val">Pennsylvania, United States</div></div></div>
+          <div class="cc-arrow" style="opacity:.2">·</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="ft-l">Hetvi Soni</div>
+  <div class="ft-r">© 2026 · Data Analyst · Penn State · Pennsylvania</div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     📸 HOW TO ADD YOUR PHOTO 3 STEPS
+═══════════════════════════════════════════════ -->
+<!--
+STEP 1: Save your photo
+  - Name it exactly: hetvi-photo.jpg  (or .png, .webp)
+  - Put it in the SAME FOLDER as this index.html file
+
+STEP 2: Find this line in the code (around line 630):
+  <div class="hero-photo-placeholder"> ... </div>
+
+  REPLACE that entire <div class="hero-photo-placeholder">...</div> block with:
+  <img src="hetvi-photo.jpg" alt="Hetvi Soni">
+
+STEP 3: Push to GitHub
+  git add hetvi-photo.jpg index.html
+  git commit -m "Add profile photo"
+  git push
+
+  GitHub Pages will rebuild automatically in ~1 minute.
+
+PHOTO TIPS for best result:
+  ✓ Square crop or portrait (1:1 or 3:4 ratio works best)
+  ✓ Face clearly visible, good lighting
+  ✓ Minimum 400×400px, ideally 800×800px
+  ✓ The CSS adds border-radius so square photos look great
+-->
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('up',scrollY>8),{passive:true});
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.07,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
